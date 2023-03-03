@@ -1,7 +1,5 @@
 defmodule LibrElix.Library.Schemas.Librarian do
-  use Ecto.Schema
-
-  import Ecto.Changeset
+  use LibrElix, :schema
 
   @required_fields ~w(
     name
@@ -12,6 +10,8 @@ defmodule LibrElix.Library.Schemas.Librarian do
     password
   )a
 
+  @type librarian :: Librarian.t()
+
   schema "librarians" do
     field :name, :string
     field :email, :string
@@ -21,6 +21,7 @@ defmodule LibrElix.Library.Schemas.Librarian do
     timestamps()
   end
 
+  @spec changeset(librarian, map) :: changeset
   def changeset(schema, attrs) do
     schema
     |> cast(attrs, @required_fields ++ @optional_fields)
