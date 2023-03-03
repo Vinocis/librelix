@@ -9,6 +9,7 @@ config :librelix, LibrElix.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
+  port: 6543,
   database: "librelix_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
