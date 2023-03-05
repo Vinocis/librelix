@@ -19,6 +19,10 @@ erl_crash.dump
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
 
+# Ignore environment variables files
+/.env
+/.envrc
+
 # Ignore package tarball (built via "mix hex.build").
 librelix-*.tar
 
