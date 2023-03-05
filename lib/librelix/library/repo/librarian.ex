@@ -17,4 +17,14 @@ defmodule LibrElix.Library.Repo.Librarian do
     |> Librarian.changeset(attrs)
     |> Repo.insert()
   end
+
+  @spec update(librarian, map) :: {:ok, librarian} | {:error, changeset}
+  def update(librarian, attrs) do
+    librarian
+    |> Librarian.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @spec delete(librarian) :: {:ok, librarian} | {:error, changeset}
+  def delete(librarian), do: Repo.delete(librarian)
 end
