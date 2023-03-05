@@ -29,10 +29,12 @@ defmodule LibrElix.Library.Schemas.Librarian do
     |> maybe_hash_password()
   end
 
-  defp maybe_hash_password(%Ecto.Changeset{
-      valid?: true,
-      changes: %{password: password}
-    } = changeset) do
+  defp maybe_hash_password(
+         %Ecto.Changeset{
+           valid?: true,
+           changes: %{password: password}
+         } = changeset
+       ) do
     hashed_password = Bcrypt.add_hash(password)
 
     change(changeset, hashed_password)
