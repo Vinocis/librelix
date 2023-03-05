@@ -2,7 +2,7 @@ defmodule LibrElix.Factory do
   use ExMachina.Ecto, repo: LibrElix.Repo
 
   alias LibrElix.Library.Schemas.Librarian
- 
+
   def librarian_factory(attrs) do
     attrs = handle_librarian_password(attrs)
 
@@ -21,7 +21,7 @@ defmodule LibrElix.Factory do
     hashed_password = Bcrypt.hash_pwd_salt(password)
 
     attrs
-    |> Map.replace(:password, nil)
+    |> Map.put(:password, nil)
     |> Map.put(:password_hash, hashed_password)
   end
 
