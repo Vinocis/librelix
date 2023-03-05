@@ -1,11 +1,12 @@
 defmodule LibrElix.Library.Schemas.LibrarianTest do
   use LibrElix.DataCase
 
+  alias LibrElix.Factory
   alias LibrElix.Library.Schemas.Librarian
 
   describe "changeset/2" do
     test "hashes the librarian password" do
-      attrs = %{email: "librarian@librelix.com", name: "Lee Bryan", password: "12345"}
+      attrs = Factory.params_for(:librarian, email: "librarian@librelix.com")
       changeset = Librarian.changeset(%Librarian{}, attrs)
 
       assert %{password_hash: _hash} = changeset.changes

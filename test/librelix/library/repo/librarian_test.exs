@@ -9,7 +9,8 @@ defmodule LibrElix.Library.Repo.LibrarianTest do
       librarian = Factory.insert(:librarian)
 
       assert {:ok, target} = LibrarianRepo.fetch(librarian.id)
-      assert target == librarian
+      assert target.id == librarian.id
+      assert target.password_hash == librarian.password_hash
     end
 
     test "return an error tuple when librarian does not exists" do
@@ -22,16 +23,17 @@ defmodule LibrElix.Library.Repo.LibrarianTest do
 
   describe "fetch_by/1" do
     test "return a success tuple with the librarian when found" do
-      librarian = Factory.insert(:librarian, name: "Fulano")
+      librarian = Factory.insert(:librarian)
 
-      assert {:ok, target} = LibrarianRepo.fetch_by(name: "Fulano")
-      assert target == librarian
+      assert {:ok, target} = LibrarianRepo.fetch_by(name: "Lee Bryan")
+      assert target.id == librarian.id
+      assert target.password_hash == librarian.password_hash
     end
 
     test "return an error tuple when librarian does not exists" do
       Factory.insert(:librarian)
 
-      assert {:error, error} = LibrarianRepo.fetch_by(name: "Fulano")
+      assert {:error, error} = LibrarianRepo.fetch_by(name: "Jhon")
       assert error == :librarian_not_found
     end
   end
@@ -56,9 +58,9 @@ defmodule LibrElix.Library.Repo.LibrarianTest do
   describe "update/1" do
     test "returns the updated librarian when changeset is valid" do
       librarian = Factory.insert(:librarian)
-      attrs = Factory.params_for(:librarian, name: "Jhon")
-
       assert librarian.name == "Lee Bryan"
+
+      attrs = Factory.params_for(:librarian, name: "Jhon")
 
       assert {:ok, librarian} = LibrarianRepo.update(librarian, attrs)
       assert librarian.name == "Jhon"

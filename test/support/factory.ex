@@ -21,7 +21,7 @@ defmodule LibrElix.Factory do
     hashed_password = Bcrypt.hash_pwd_salt(password)
 
     attrs
-    |> Map.put(:password, nil)
+    |> Map.put(:password, password)
     |> Map.put(:password_hash, hashed_password)
   end
 
