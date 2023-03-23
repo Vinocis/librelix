@@ -6,6 +6,7 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :librelix, LibrElix.Repo,
+  port: 6543,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
