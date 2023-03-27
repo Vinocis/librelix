@@ -7,6 +7,15 @@ defmodule LibrElix do
   if it comes from the database, an external API or others.
   """
 
+  def repo do
+    quote do
+      alias LibrElix.Repo
+
+      @type changeset :: Ecto.Changeset.t()
+      @type query :: Ecto.Query.t()
+    end
+  end
+
   def schema do
     quote do
       use Ecto.Schema
