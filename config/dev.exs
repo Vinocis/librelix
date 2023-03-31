@@ -9,11 +9,6 @@ config :librelix, LibrElix.Repo,
   database: "librelix_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
-  
-# Guardian config
-config :librelix, LibrElix.Auth.Guardian,
-  issuer: "librelix",
-  secret_key: System.get_env("GUARDIAN_SECRET")
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

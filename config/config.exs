@@ -18,6 +18,11 @@ config :librelix, LibrElixWeb.Endpoint,
   pubsub_server: LibrElix.PubSub,
   live_view: [signing_salt: "DXr5ImGg"]
 
+# Guardian config
+config :librelix, LibrElix.Auth.Guardian,
+  issuer: "librelix",
+  secret_key: System.get_env("GUARDIAN_SECRET")
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
