@@ -18,7 +18,6 @@ defmodule LibrElix.DataCase do
 
   using do
     quote do
-      alias LibrElix.Repo
       alias LibrElix.Factory
 
       import Ecto

@@ -19,6 +19,8 @@ defmodule LibrElixWeb.ConnCase do
 
   using do
     quote do
+      alias LibrElix.Factory
+
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
@@ -35,5 +37,12 @@ defmodule LibrElixWeb.ConnCase do
     pid = Ecto.Adapters.SQL.Sandbox.start_owner!(LibrElix.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+
+  def put_basic_auth_credentials(%{conn: conn}) do
+    credentials = Base.encode64("test:secret")
+    authenticated_conn = Plug.Conn.put_req_header(conn, "authorization", "Basic #{credentials}")
+
+    %{conn: authenticated_conn}
   end
 end
