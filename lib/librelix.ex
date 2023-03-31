@@ -7,6 +7,12 @@ defmodule LibrElix do
   if it comes from the database, an external API or others.
   """
 
+  def service do
+    quote do
+      @behaviour LibrElix.ServiceBehaviour
+    end
+  end
+
   def repo do
     quote do
       alias LibrElix.Repo
