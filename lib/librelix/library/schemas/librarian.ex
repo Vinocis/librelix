@@ -4,9 +4,6 @@ defmodule LibrElix.Library.Schemas.Librarian do
   @required_fields ~w(
     name
     email
-  )a
-
-  @optional_fields ~w(
     password
   )a
 
@@ -24,7 +21,7 @@ defmodule LibrElix.Library.Schemas.Librarian do
   @spec changeset(librarian, map) :: changeset
   def changeset(schema, attrs) do
     schema
-    |> cast(attrs, @required_fields ++ @optional_fields)
+    |> cast(attrs, @required_fields)
     |> validate_required(@required_fields)
     |> unique_constraint(:email)
     |> maybe_hash_password()
