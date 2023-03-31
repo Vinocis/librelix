@@ -1,4 +1,4 @@
-defmodule Librelix.Library.Services.AuthenticateLibrarianTest do
+defmodule LibrElix.Library.Services.AuthenticateLibrarianTest do
   use LibrElix.DataCase, async: true
 
   alias LibrElix.Library.Services.AuthenticateLibrarian

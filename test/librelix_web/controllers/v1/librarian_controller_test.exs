@@ -1,4 +1,4 @@
-defmodule LibrelixWeb.V1.LibrarianControllerTest do
+defmodule LibrElixWeb.V1.LibrarianControllerTest do
   use LibrElixWeb.ConnCase, async: true
 
   setup :put_basic_auth_credentials
