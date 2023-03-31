@@ -1,12 +1,31 @@
 defmodule LibrElixWeb.Router do
   use LibrElixWeb, :router
 
+  alias LibrElixWeb.Plugs
+
+  import Plug.BasicAuth
+
+  pipeline :guardian_auth do
+    plug Plugs.Guardian.AuthPipeline
+  end
+
+  pipeline :auth do
+    plug :basic_auth, Application.get_env(:librelix, :basic_auth)
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/api", LibrElixWeb do
+  scope "/v1", LibrElixWeb.V1 do
     pipe_through :api
+
+    scope "/librarians" do
+      pipe_through :auth
+
+      post "/", LibrarianController, :create
+      post "/sign_in", LibrarianController, :sign_in
+    end
   end
 
   # Enables LiveDashboard only for development
