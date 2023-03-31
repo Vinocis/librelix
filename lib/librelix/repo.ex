@@ -23,6 +23,6 @@ defmodule LibrElix.Repo do
     end
   end
 
-  def normalize_fetch_error(Librarian), do: :librarian_not_found
-  def normalize_fetch_error(_source), do: :not_found
+  defp normalize_fetch_error(Librarian), do: :librarian_not_found
+  defp normalize_fetch_error(_source), do: :not_found
 end
