@@ -1,7 +1,6 @@
 defmodule LibrElix.Library.Repos.LibrarianTest do
   use LibrElix.DataCase
 
-  alias LibrElix.Factory
   alias LibrElix.Library.Repos.Librarian, as: LibrarianRepo
 
   describe "fetch/1" do
@@ -41,16 +40,16 @@ defmodule LibrElix.Library.Repos.LibrarianTest do
   describe "insert/1" do
     test "returns the created librarian when changeset is valid" do
       attrs = Factory.params_for(:librarian, email: "librarian@librelix.com")
-      {:ok, librarian} = LibrarianRepo.insert(attrs)
 
+      assert {:ok, librarian} = LibrarianRepo.insert(attrs)
       assert librarian.name == "Lee Bryan"
       assert librarian.email == "librarian@librelix.com"
     end
 
     test "with invalid params, returns the changeset" do
       attrs = Factory.params_for(:librarian, email: nil)
-      {:error, changeset} = LibrarianRepo.insert(attrs)
 
+      assert {:error, changeset} = LibrarianRepo.insert(attrs)
       assert errors_on(changeset) == %{email: ["can't be blank"]}
     end
   end

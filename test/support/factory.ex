@@ -2,6 +2,7 @@ defmodule LibrElix.Factory do
   use ExMachina.Ecto, repo: LibrElix.Repo
 
   alias LibrElix.Library.Schemas.Librarian
+  alias LibrElix.Library.Schemas.Book
 
   def librarian_factory(attrs) do
     attrs = handle_librarian_password(attrs)
@@ -29,5 +30,15 @@ defmodule LibrElix.Factory do
     range
     |> Enum.random()
     |> Integer.to_string()
+  end
+
+  def book_factory() do
+    %Book{
+      name: "Very Creative Name Here",
+      author: "Robson",
+      genre: "Sci-fi",
+      synopsis: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+      borrowed?: false
+    }
   end
 end
