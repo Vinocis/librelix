@@ -49,7 +49,8 @@ defmodule LibrElix.MixProject do
       {:ex_machina, "~> 2.7.0", only: :test},
       {:guardian, "~> 2.0"},
       {:crawly, "~> 0.15.0"},
-      {:floki, "~> 0.33.0"}
+      {:floki, "~> 0.33.0"},
+      {:gen_stage, "~> 1.0"}
     ]
   end
 
