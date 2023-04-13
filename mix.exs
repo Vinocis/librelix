@@ -47,7 +47,9 @@ defmodule LibrElix.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:bcrypt_elixir, "~> 3.0"},
       {:ex_machina, "~> 2.7.0", only: :test},
-      {:guardian, "~> 2.0"}
+      {:guardian, "~> 2.0"},
+      {:crawly, "~> 0.15.0"},
+      {:floki, "~> 0.33.0"}
     ]
   end
 

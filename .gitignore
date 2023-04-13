@@ -22,6 +22,9 @@ erl_crash.dump
 # Ignore environment variables files
 /.env
 
+# Ignore Crawly lib storage file
+/dets_simple_storage
+
 # Ignore package tarball (built via "mix hex.build").
 librelix-*.tar
 
